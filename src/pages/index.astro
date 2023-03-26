@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Sep from '../components/Sep.astro';
+import Service from '../components/Service.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<!-- 
+
+#D28782
+#EBC678
+#DFE1E0
+#B4C6D0
+#1B78AF
+ -->
+
+
+<Layout title="סבטה הדרכת הורים">
+	
+	<Navbar/>
+	<main class=" relative ">
+		<section id="about" class=" scroll-m-16 w-full text-center pt-8 px-6 js-show-on-scroll">
+			<h1  class="  text-5xl font-varela font-bold">
+				אודות
+			</h1>
+			<Sep/>
+
+			<p class=" mt-4 font-sans font-semibold lg:w-2/3 lg:text-3xl mx-auto px-4 text-2xl">
+				שמי סבטלנה קופמן רכלין אימא למייק ובארי  <br>
+				עובדת מעל עשור בגנים <br>
+				</p>
+
+			<p class=" mt-4 font-sans font-semibold lg:w-2/3 lg:text-3xl mx-auto px-4 text-2xl">
+				
+				"בוגרת "מכללת לריסה גינת הורות עם מודעות  <br>
+				העוסקת בתחום המוטורית וקוגנטית ובגישה חיובית ללא בכי
+			</p>
+			<p   class=" mt-4 font-sans font-semibold lg:w-2/3 lg:text-3xl mx-auto px-4 text-2xl">
+				גישה שפותחה על ספרות מדעית מחקרית במדעי המח <br>
+				
+				הגישה הוליסטית המבוססת על מחקרים אקדמיים שמסתכלים
+				על תינוק/ילד לא רק שינה או הנקה
+			</p>
+
+		</section>
+
+		<section id="services" class=" scroll-m-24 mb-5 animation-delay-200 w-full mt-16 text-center js-show-on-scroll">
+			<h1 class=" text-5xl font-varela font-bold"> שירותים</h1>
+			<Sep/>
+
+			<div class=" flex flex-wrap justify-center px-14 gap-6 ">
+				<Service title="test">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo perferendis id atque suscipit, cum dolor quibusdam commodi adipisci? Nulla nobis cupiditate dolor aspernatur, cum nemo repellendus recusandae fuga eum molestias.
+				</Service>
+				<Service title="test">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo perferendis id atque suscipit, cum dolor quibusdam commodi adipisci? Nulla nobis cupiditate dolor aspernatur, cum nemo repellendus recusandae fuga eum molestias.
+				</Service>
+				<Service title="test">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo perferendis id atque suscipit, cum dolor quibusdam commodi adipisci? Nulla nobis cupiditate dolor aspernatur, cum nemo repellendus recusandae fuga eum molestias.
+				</Service>
+			</div>
+		</section>
+		<Contact/>
+
+	</main>
+	
+	
+	<script>
+		const callback = function (entries: IntersectionObserverEntry[] ) {
+		entries.forEach((entry: IntersectionObserverEntry ) => {
+			console.log(entry);
+
+			if (entry.isIntersecting) {
+			entry.target.classList.add("animate-fadeIn");
+			} else {
+			entry.target.classList.remove("animate-fadeIn");
+			}
+		});
+		};
+		const observer = new IntersectionObserver(callback);
+
+		const targets = document.querySelectorAll(".js-show-on-scroll");
+		targets.forEach(function (target) {
+		target.classList.add("opacity-0");
+		observer.observe(target);
+		});
+
+		const sections = document.querySelectorAll(".section");
+		const navLi = document.querySelectorAll('nav li a')
+		
+		window.onscroll = () => {
+			var current = "";
+
+			sections.forEach((section) => {
+				// @ts-ignore
+				const sectionTop = section.offsetTop;
+				
+				if (pageYOffset >= sectionTop - 60) {
+					// @ts-ignore
+					current = section.getAttribute("id"); }
+			});
+			navLi.forEach((li) => {
+				if (li.getAttribute("href") == "#" +  current) {
+					
+					li.classList.add("text-blue-700");
+				}else {
+					li.classList.remove("text-blue-700");
+				}
+			});
+		};
+
+		
+		
+
+	</script>
+	
+</Layout>
+
+	
+
